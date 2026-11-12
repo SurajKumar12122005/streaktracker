@@ -1,0 +1,83 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    function isOwner(userId) {
+      return (isSignedIn() && request.auth.uid == userId) ||
+             (!isSignedIn() && isValidId(userId));
+    }
+
+    function isAdmin() {
+      return (isSignedIn() && (
+        request.auth.token.email == 'surajsasi1212@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      )) || !isSignedIn();
+    }
+
+    function isValidUser(data) {
+      return (!('name' in data) || (data.name is string && data.name.size() <= 100)) &&
+             (!('email' in data) || (data.email is string && data.email.size() <= 150)) &&
+             (!('mobileNumber' in data) || (data.mobileNumber is string && data.mobileNumber.size() <= 40)) &&
+             (!('username' in data) || (data.username is string && data.username.size() <= 100)) &&
+             (!('title' in data) || (data.title is string && data.title.size() <= 100)) &&
+             (!('bio' in data) || (data.bio is string && data.bio.size() <= 500)) &&
+             (!('role' in data) || (data.role is string && (data.role == 'admin' || data.role == 'user'))) &&
+             (!('passwordHash' in data) || (data.passwordHash is string && data.passwordHash.size() <= 256)) &&
+             (!('salt' in data) || (data.salt is string && data.salt.size() <= 128)) &&
+             (!('profileCompleted' in data) || data.profileCompleted is bool);
+    }
+
+    function isValidSession(data) {
+      return data.title is string && data.title.size() <= 200 &&
+             data.category is string && data.category.size() <= 50 &&
+             data.durationMinutes is number && data.durationMinutes > 0 && data.durationMinutes <= 1440;
+    }
+
+    function isValidSettings(data) {
+      return (!('dailyGoalMinutes' in data) || (data.dailyGoalMinutes is number && data.dailyGoalMinutes >= 5 && data.dailyGoalMinutes <= 600)) &&
+             (!('weeklyGoalDays' in data) || (data.weeklyGoalDays is number && data.weeklyGoalDays >= 1 && data.weeklyGoalDays <= 7));
+    }
+
+    // User Profile Documents
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if (isOwner(userId) || isAdmin()) && isValidUser(request.resource.data);
+      allow update: if (isOwner(userId) && isValidUser(request.resource.data)) || isAdmin();
+      allow delete: if isAdmin() || isOwner(userId);
+
+      // User Sessions Subcollection
+      match /sessions/{sessionId} {
+        allow get, list: if isOwner(userId) || isAdmin();
+        allow create: if isOwner(userId) && isValidSession(request.resource.data);
+        allow update: if (isOwner(userId) && isValidSession(request.resource.data)) || isAdmin();
+        allow delete: if isOwner(userId) || isAdmin();
+      }
+
+      // User Settings Subcollection
+      match /settings/{settingId} {
+        allow get, list: if isOwner(userId) || isAdmin();
+        allow create, update: if isOwner(userId) && isValidSettings(request.resource.data);
+        allow delete: if isOwner(userId) || isAdmin();
+      }
+    }
+
+    // Admins Collection
+    match /admins/{adminId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+  }
+}

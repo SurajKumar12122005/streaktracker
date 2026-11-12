@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>StreakTracker</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#002111", "surface-container-low": "#131821", "surface-container-high": "#222834", "error": "#ffb4ab", "on-secondary": "#003824", "secondary-container": "#00a572", "surface-container-highest": "#2c3340", "on-error-container": "#ffdad6", "secondary": "#4edea3", "tertiary-fixed": "#dbe1ff", "on-tertiary": "#002a78", "on-secondary-fixed-variant": "#005236", "on-secondary-container": "#00311f", "primary": "#00f5a0", "inverse-primary": "#006c44", "on-secondary-fixed": "#002113", "inverse-on-surface": "#2b3139", "outline": "#475569", "surface-tint": "#00e293", "on-primary-container": "#003921", "tertiary-container": "#cbd6ff", "surface-container": "#181f2a", "on-primary": "#003921", "inverse-surface": "#dee2ed", "surface-container-lowest": "#0b0f16", "tertiary": "#f2f3ff", "outline-variant": "#222a36", "background": "#0b0d11", "on-tertiary-container": "#0052d8", "surface-variant": "#252c38", "primary-container": "#00f5a0", "error-container": "#93000a", "primary-fixed": "#50ffaf", "on-surface": "#f8fafc", "on-error": "#690005", "on-background": "#f8fafc", "primary-fixed-dim": "#00e293", "surface-bright": "#333b49", "surface": "#0e141b", "on-primary-fixed-variant": "#005232", "on-tertiary-fixed-variant": "#003ea8", "surface-dim": "#0e141b", "tertiary-fixed-dim": "#b4c5ff", "secondary-fixed-dim": "#4edea3", "on-tertiary-fixed": "#00174b", "on-surface-variant": "#94a3b8", "secondary-fixed": "#6ffbbe" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.375rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "gutter": "1.5rem", "margin": "2rem" }, "fontFamily": { "display-lg": ["Geist", "sans-serif"], "headline-lg": ["Geist", "sans-serif"], "headline-sm": ["Geist", "sans-serif"], "title-md": ["Geist", "sans-serif"], "body-lg": ["Geist", "sans-serif"], "body-md": ["Geist", "sans-serif"], "body-sm": ["Geist", "sans-serif"], "label-md": ["JetBrains Mono", "monospace"], "label-sm": ["JetBrains Mono", "monospace"] }, "fontSize": { "label-sm": ["0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" }], "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-sm": ["0.75rem", { "lineHeight": "1.125rem", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-md": ["0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0em", "fontWeight": "400" }], "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "400" }], "title-md": ["1.125rem", { "lineHeight": "1.625rem", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-lg": ["2.75rem", { "lineHeight": "3rem", "letterSpacing": "-0.04em", "fontWeight": "700" }] } } } };</script></head><body class="bg-[#0b0d11] font-body-md text-body-md text-slate-100 antialiased selection:bg-primary selection:text-black"><header class="fixed top-0 left-0 right-0 z-50 bg-[#0e141b]/90 backdrop-blur-xl border-b border-[#222a36] shadow-[0_1px_16px_rgba(0,0,0,0.6)]"><div class="h-16 max-w-[1440px] mx-auto px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm group focus:outline-none" data-path="dashboard" href="#"><div class="w-8 h-8 rounded-lg bg-[#181f2a] border border-[#2a3240] flex items-center justify-center text-primary group-hover:border-primary/50 transition-colors shadow-inner"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-white font-bold tracking-tight">StreakTracker</span><span class="font-label-sm text-label-sm text-slate-400 font-mono uppercase tracking-wider">Dev Cadence</span></div></a><nav class="hidden lg:flex items-center gap-space-lg" data-active-classes="text-primary font-title-md"><a aria-current="page" class="transition-colors py-space-xs text-primary font-title-md flex items-center gap-1.5" data-path="dashboard" href="#"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Dashboard</a><a class="font-body-md text-body-md text-slate-400 hover:text-white transition-colors py-space-xs" data-path="add-session" href="#">Add Session</a><a class="font-body-md text-body-md text-slate-400 hover:text-white transition-colors py-space-xs" data-path="monthly-calendar" href="#">Monthly Calendar</a><a class="font-body-md text-body-md text-slate-400 hover:text-white transition-colors py-space-xs" data-path="goal-settings" href="#">Goal Settings</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-3 py-1 rounded-full bg-[#181f2a] border border-primary/30 shadow-[0_0_15px_rgba(0,245,160,0.12)]"><span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span><span class="font-label-md text-label-md font-semibold text-primary">5 Day Streak</span></div><a class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary text-black font-body-md text-body-md font-bold shadow-[0_0_20px_rgba(0,245,160,0.3)] hover:brightness-110 active:scale-[0.98] transition-all" data-path="add-session" href="#"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>Record Learning</span></a><div class="w-8 h-8 rounded-full bg-[#181f2a] border border-[#2a3240] flex items-center justify-center ring-1 ring-slate-700/60 shadow-sm"><span class="material-symbols-outlined text-slate-300 text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-[#0b0d11] min-h-screen"><div class="max-w-[1440px] mx-auto px-margin py-space-lg"><div class="flex flex-col w-full gap-space-lg">
+<!-- TOP HERO & GREETING BANNER -->
+<div class="relative overflow-hidden rounded-2xl bg-[#131821] border border-[#222a36] p-space-lg shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-primary/[0.04] blur-3xl pointer-events-none"></div>
+<div class="absolute right-48 -bottom-20 w-64 h-64 rounded-full bg-emerald-500/[0.03] blur-2xl pointer-events-none"></div>
+<div class="relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            ACTIVE CADENCE
+          </span>
+<span class="font-label-md text-label-md text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-slate-400">today</span>
+            Today: Friday, Oct 24, 2025
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-white tracking-tight">
+          Welcome back, Developer! Keep your momentum going.
+        </h1>
+<p class="font-body-md text-body-md text-slate-400">
+          Your current flow state is synchronized across 5 technical tracks. You have completed 75% of your target for today.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="add-btn inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-white text-black font-title-md text-title-md font-semibold hover:bg-slate-200 shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all" onclick="document.getElementById('quick-add-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[20px]">add_task</span>
+<span>+ Record Session</span>
+</button>
+</div>
+</div>
+</div>
+<!-- INACTIVITY / STREAK RECOVERY ALERT BOX -->
+<div class="alert-box relative overflow-hidden rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm transition-all duration-300" id="streak-recovery-alert">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pl-space-xs">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-[#181f2a] border border-[#2a3240] flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-primary text-[22px]">bolt</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-md text-title-md text-white font-semibold">Momentum Guard</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm">High Value Target</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-0.5">
+            You haven't practiced DSA for 3 days. Lock in your edge with a 15-minute recursive tree review!
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="px-space-md py-1.5 rounded-lg bg-primary/10 border border-primary/30 text-primary font-label-md text-label-md hover:bg-primary/20 transition-colors flex items-center gap-1.5" onclick="quickAdd15('DSA - Recovery Sprint')">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+          Start 15-min Session
+        </button>
+<button class="p-1 rounded-md text-slate-400 hover:text-white hover:bg-[#1f2633] transition-colors" onclick="document.getElementById('streak-recovery-alert').remove()" title="Dismiss notification">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KEY STATISTICS GRID (7 Cards) -->
+<div class="stats-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-space-md">
+<!-- Stat 1: Current Streak -->
+<div class="stat-card relative overflow-hidden rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm flex flex-col justify-between group hover:border-primary/40 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Current Streak</span>
+<div class="w-7 h-7 rounded-lg bg-[#181f2a] border border-[#2a3240] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-white tracking-tight">5</span>
+<span class="font-title-md text-title-md text-slate-400">Days</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-sm text-label-sm bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md w-fit">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+        Practiced today!
+      </div>
+</div>
+<!-- Stat 2: Longest Streak -->
+<div class="stat-card rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Longest Streak</span>
+<div class="w-7 h-7 rounded-lg bg-[#181f2a] border border-[#2a3240] flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[18px]">emoji_events</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-white tracking-tight">14</span>
+<span class="font-title-md text-title-md text-slate-400">Days</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400">Personal best: Sep 12-25</span>
+</div>
+<!-- Stat 3: Total Learning Days -->
+<div class="stat-card rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Total Days</span>
+<div class="w-7 h-7 rounded-lg bg-[#181f2a] border border-[#2a3240] flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">calendar_month</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-white tracking-tight">42</span>
+<span class="font-title-md text-title-md text-slate-400">Days</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400">Across all topics</span>
+</div>
+<!-- Stat 4: Total Learning Time -->
+<div class="stat-card rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Total Time</span>
+<div class="w-7 h-7 rounded-lg bg-[#181f2a] border border-[#2a3240] flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">schedule</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-white tracking-tight">56.5</span>
+<span class="font-title-md text-title-md text-slate-400">Hrs</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400">3,390 mins total</span>
+</div>
+<!-- Stat 5: Today's Learning Time -->
+<div class="stat-card rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm flex flex-col justify-between hover:border-primary/40 transition-all relative">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Today's Time</span>
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-primary tracking-tight" id="stat-today-time">45</span>
+<span class="font-title-md text-title-md text-slate-400">min</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400">1 active session</span>
+</div>
+<!-- Stat 6: Daily Goal -->
+<div class="stat-card rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Daily Goal</span>
+<div class="w-7 h-7 rounded-lg bg-[#181f2a] border border-[#2a3240] flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-300 text-[18px]">flag</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-white tracking-tight" id="stat-daily-goal">60</span>
+<span class="font-title-md text-title-md text-slate-400">min</span>
+</div>
+</div>
+<button class="font-label-sm text-label-sm text-primary hover:underline text-left inline-flex items-center gap-1" onclick="editDailyGoalPrompt()">
+<span>Edit Goal</span>
+<span class="material-symbols-outlined text-[12px]">edit</span>
+</button>
+</div>
+<!-- Stat 7: Remaining Minutes -->
+<div class="stat-card rounded-xl bg-[#131821] border border-[#222a36] p-space-md shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Remaining</span>
+<div class="w-7 h-7 rounded-lg bg-[#181f2a] border border-[#2a3240] flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">hourglass_bottom</span>
+</div>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-white tracking-tight" id="stat-remaining-time">15</span>
+<span class="font-title-md text-title-md text-slate-400">min</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">Countdown active</span>
+</div>
+</div>
+<!-- DAILY GOAL MANAGEMENT BOX -->
+<div class="goal-box rounded-2xl bg-[#131821] border border-[#222a36] p-space-lg shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">target</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-white font-semibold">Today's Learning Progress</h2>
+<p class="font-body-sm text-body-sm text-slate-400" id="goal-status-text">
+            Almost there! 15 minutes remaining to hit your 60-minute target.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-3 py-1.5 rounded-lg bg-[#181f2a] hover:bg-[#222a36] text-white border border-[#2a3240] font-label-md text-label-md transition-all flex items-center gap-1" onclick="quickAdd15('Self Study Extension')">
+<span class="material-symbols-outlined text-[16px] text-primary">add_circle</span>
+          Quick +15 min
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-[#0e141b] hover:bg-[#181f2a] text-slate-300 hover:text-white border border-[#222a36] font-label-md text-label-md transition-colors flex items-center gap-1" onclick="editDailyGoalPrompt()">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+          Change Daily Goal
+        </button>
+</div>
+</div>
+<!-- Progress Meter -->
+<div class="mt-space-sm space-y-2">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-slate-400">Session completion: <strong class="text-white font-bold" id="goal-fraction">45 / 60 min</strong></span>
+<span class="text-primary font-bold" id="goal-percentage">75%</span>
+</div>
+<div class="progress-bar-wrap w-full h-2.5 rounded-full bg-[#181f2a] border border-[#222a36] overflow-hidden">
+<div class="progress-bar-fill h-full rounded-full bg-primary shadow-[0_0_12px_rgba(0,245,160,0.6)] transition-all duration-500" id="progress-bar-fill" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+<!-- TWO-COLUMN MIDSECTION: Calendar & Topics Distribution -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- COLUMN A: Monthly Learning Calendar (7 cols) -->
+<div class="calendar-card lg:col-span-7 rounded-2xl bg-[#131821] border border-[#222a36] p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">calendar_month</span>
+<h3 class="font-headline-sm text-headline-sm text-white">October 2025</h3>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-[#181f2a] text-slate-400 hover:text-white transition-colors border border-transparent hover:border-[#2a3240]" title="Previous Month">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="font-label-sm text-label-sm font-semibold uppercase px-2 text-slate-400">Month 10</span>
+<button class="p-1.5 rounded-lg hover:bg-[#181f2a] text-slate-400 hover:text-white transition-colors border border-transparent hover:border-[#2a3240]" title="Next Month">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Day Labels (Mon-Sun) -->
+<div class="grid grid-cols-7 gap-2 mb-2 text-center font-label-sm text-label-sm text-slate-400 font-semibold">
+<div>Mon</div>
+<div>Tue</div>
+<div>Wed</div>
+<div>Thu</div>
+<div>Fri</div>
+<div>Sat</div>
+<div>Sun</div>
+</div>
+<!-- 31 Days Matrix for Oct 2025 (Oct 1 is Wednesday, so 2 leading empties) -->
+<div class="grid grid-cols-7 gap-2 text-center font-label-md text-label-md">
+<!-- Leading spacers for Mon, Tue -->
+<div class="h-10 rounded-lg opacity-10"></div>
+<div class="h-10 rounded-lg opacity-10"></div>
+<!-- Oct 1 (Practiced) -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold relative group cursor-pointer hover:border-primary/50">
+<span>1</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<!-- Oct 2 (Practiced) -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold relative group cursor-pointer hover:border-primary/50">
+<span>2</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<!-- Oct 3 (Practiced) -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold relative group cursor-pointer hover:border-primary/50">
+<span>3</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<!-- Oct 4 (Missed) -->
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center relative group cursor-pointer hover:bg-[#181f2a]">
+<span>4</span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<!-- Oct 5 (Missed) -->
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center relative group cursor-pointer hover:bg-[#181f2a]">
+<span>5</span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<!-- Oct 6 - 12 (Week 2) -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>6</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>7</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>8</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>9</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>10</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>11</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>12</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<!-- Oct 13 - 19 (Week 3) -->
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>13</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>14</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>15</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>16</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>17</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>18</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<div class="h-10 rounded-lg bg-[#0e141b]/60 border border-[#1b222d] text-slate-500 flex flex-col items-center justify-center">
+<span>19</span><span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<!-- Oct 20 - 26 (Current Streak Week) -->
+<!-- 20: Practiced -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>20</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<!-- 21: Practiced -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>21</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<!-- 22: Practiced -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>22</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<!-- 23: Practiced -->
+<div class="h-10 rounded-lg bg-[#181f2a] border border-[#2a3240] text-slate-200 flex flex-col items-center justify-center font-semibold">
+<span>23</span><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<!-- 24: Today (Current active day) -->
+<div class="h-10 rounded-lg bg-primary text-black flex flex-col items-center justify-center font-bold shadow-[0_0_16px_rgba(0,245,160,0.4)] relative ring-2 ring-primary/40">
+<span>24</span>
+<span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+</div>
+<!-- 25: Future -->
+<div class="h-10 rounded-lg text-slate-500 flex flex-col items-center justify-center">
+<span>25</span>
+</div>
+<!-- 26: Future -->
+<div class="h-10 rounded-lg text-slate-500 flex flex-col items-center justify-center">
+<span>26</span>
+</div>
+<!-- Oct 27 - 31 (Week 5) -->
+<div class="h-10 rounded-lg text-slate-500 flex flex-col items-center justify-center"><span>27</span></div>
+<div class="h-10 rounded-lg text-slate-500 flex flex-col items-center justify-center"><span>28</span></div>
+<div class="h-10 rounded-lg text-slate-500 flex flex-col items-center justify-center"><span>29</span></div>
+<div class="h-10 rounded-lg text-slate-500 flex flex-col items-center justify-center"><span>30</span></div>
+<div class="h-10 rounded-lg text-slate-500 flex flex-col items-center justify-center"><span>31</span></div>
+<div class="h-10 rounded-lg opacity-10"></div>
+<div class="h-10 rounded-lg opacity-10"></div>
+</div>
+</div>
+<!-- Calendar Status Legend -->
+<div class="pt-space-md mt-space-md bg-[#0e141b] border border-[#222a36] p-space-sm rounded-xl flex items-center justify-around flex-wrap gap-2 text-slate-400 font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="text-slate-300">Practiced</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+<span>Missed</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-primary text-black inline-flex items-center justify-center text-[8px] font-bold">24</span>
+<span class="text-slate-300">Today</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#181f2a] border border-slate-700"></span>
+<span>Future</span>
+</div>
+</div>
+</div>
+<!-- COLUMN B: Category Distribution & Mastery Pulse (5 cols) -->
+<div class="lg:col-span-5 rounded-2xl bg-[#131821] border border-[#222a36] p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">category</span>
+<h3 class="font-headline-sm text-headline-sm text-white">Category Distribution</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-mono font-semibold">5 Active Tracks</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mb-space-md">
+          Accumulated session tags across your software engineering curriculum.
+        </p>
+<!-- Topic Pills with Session Counts -->
+<div class="flex flex-wrap gap-2 mb-space-md">
+<div class="px-3 py-1.5 rounded-full bg-[#181f2a] border border-[#2a3240] text-slate-200 font-label-md text-label-md flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-semibold text-white">DSA</span>
+<span class="text-slate-400 font-mono text-label-sm">(18)</span>
+</div>
+<div class="px-3 py-1.5 rounded-full bg-[#181f2a] border border-[#2a3240] text-slate-200 font-label-md text-label-md flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-slate-300"></span>
+<span class="font-semibold text-white">Python</span>
+<span class="text-slate-400 font-mono text-label-sm">(12)</span>
+</div>
+<div class="px-3 py-1.5 rounded-full bg-[#181f2a] border border-[#2a3240] text-slate-200 font-label-md text-label-md flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span class="font-semibold text-white">AI/ML</span>
+<span class="text-slate-400 font-mono text-label-sm">(8)</span>
+</div>
+<div class="px-3 py-1.5 rounded-full bg-[#181f2a] border border-[#2a3240] text-slate-200 font-label-md text-label-md flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span class="font-semibold text-white">Django</span>
+<span class="text-slate-400 font-mono text-label-sm">(9)</span>
+</div>
+<div class="px-3 py-1.5 rounded-full bg-[#181f2a] border border-[#2a3240] text-slate-200 font-label-md text-label-md flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-teal-300"></span>
+<span class="font-semibold text-white">SQL</span>
+<span class="text-slate-400 font-mono text-label-sm">(5)</span>
+</div>
+</div>
+<!-- Inline SVG Distribution Bar Chart -->
+<div class="rounded-xl bg-[#0e141b] border border-[#222a36] p-space-md mb-space-md">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm uppercase text-slate-400 tracking-wider">Curriculum Focus Ratio</span>
+<span class="font-label-sm text-label-sm text-white font-mono">52 Total Sprints</span>
+</div>
+<!-- Stacked Bar Visual -->
+<div class="w-full h-2.5 rounded-full flex overflow-hidden gap-0.5 bg-[#181f2a]">
+<div class="h-full bg-primary" style="width: 35%;" title="DSA (35%)"></div>
+<div class="h-full bg-slate-200" style="width: 23%;" title="Python (23%)"></div>
+<div class="h-full bg-slate-400" style="width: 17%;" title="Django (17%)"></div>
+<div class="h-full bg-emerald-400" style="width: 15%;" title="AI/ML (15%)"></div>
+<div class="h-full bg-slate-600" style="width: 10%;" title="SQL (10%)"></div>
+</div>
+<div class="flex items-center justify-between mt-2 font-label-sm text-label-sm text-slate-400">
+<span class="text-primary font-medium">DSA 35%</span>
+<span>Python 23%</span>
+<span>Django 17%</span>
+<span class="text-emerald-400">AI/ML 15%</span>
+<span>SQL 10%</span>
+</div>
+</div>
+</div>
+<!-- Weekly Mastery Summary Card -->
+<div class="rounded-xl bg-[#181f2a] border border-[#2a3240] p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-[#0e141b] border border-[#222a36] flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-white font-semibold">4 Concepts Mastered</div>
+<div class="font-body-sm text-body-sm text-slate-400">Ahead of your weekly target (+1 pace)</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[24px]">trending_up</span>
+</div>
+</div>
+</div>
+<!-- SEARCH, FILTERING & SESSION HISTORY SECTION -->
+<div class="rounded-2xl bg-[#131821] border border-[#222a36] p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Controls Header -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md pb-space-sm">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold">Recorded Learning Cadence</h3>
+<p class="font-body-sm text-body-sm text-slate-400">Review, filter, and inspect your latest technical sessions.</p>
+</div>
+<!-- Search & Filters Toolbar -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm">
+<!-- Search bar input -->
+<div class="relative min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 rounded-lg bg-[#0e141b] border border-[#222a36] text-white font-body-sm text-body-sm placeholder:text-slate-500 focus:bg-[#181f2a] focus:border-primary/60 focus:outline-none transition-all" id="session-search-input" oninput="applyFilters()" placeholder="Search concepts (e.g. Binary Search, Joins)..." type="text"/>
+</div>
+<!-- Category Dropdown Filter -->
+<select class="px-3 py-1.5 rounded-lg bg-[#0e141b] border border-[#222a36] text-white font-body-sm text-body-sm focus:border-primary/60 focus:outline-none transition-all" id="category-filter-select" onchange="applyFilters()">
+<option value="ALL">All Categories</option>
+<option value="DSA">DSA</option>
+<option value="Python">Python</option>
+<option value="AI/ML">AI/ML</option>
+<option value="Django">Django</option>
+<option value="SQL">SQL</option>
+<option value="Web Development">Web Development</option>
+</select>
+<!-- Filter and Clear actions -->
+<button class="px-3 py-1.5 rounded-lg bg-primary text-black font-label-md text-label-md font-semibold hover:brightness-110 transition-colors shadow-sm" onclick="applyFilters()">
+          Filter
+        </button>
+<button class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-label-md text-label-md transition-colors hover:underline" onclick="clearFilters()">
+          Clear Filters
+        </button>
+</div>
+</div>
+<!-- Active Sessions Feed / Table -->
+<div class="flex flex-col gap-space-sm" id="sessions-container">
+<!-- Session 1 -->
+<div class="session-card rounded-xl bg-[#0e141b] border border-[#222a36] hover:border-slate-700 p-space-md transition-all duration-200 group" data-category="DSA" data-concept="Binary Search &amp; Bisect Module" data-notes="Practiced lower bound search and LeetCode #704. Good recursion tree clarity.">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-start md:items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-[#181f2a] border border-[#2a3240] text-primary flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0">
+              DSA
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-title-md text-title-md text-white font-semibold">Binary Search &amp; Bisect Module</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm">DSA</span>
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">45 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-1">
+                Practiced lower bound search and LeetCode #704. Good recursion tree clarity.
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-space-md shrink-0">
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">Oct 24, 2025</span>
+<div class="session-actions flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-md hover:bg-[#181f2a] text-slate-400 hover:text-primary transition-colors" onclick="editSession(this, 'Binary Search &amp; Bisect Module', 'DSA', 45)" title="Edit session">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors" onclick="deleteSession(this)" title="Delete session">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Session 2 -->
+<div class="session-card rounded-xl bg-[#0e141b] border border-[#222a36] hover:border-slate-700 p-space-md transition-all duration-200 group" data-category="Django" data-concept="Django ORM Prefetch Related" data-notes="Solved N+1 query problem using prefetch_related on ManyToMany fields.">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-start md:items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-[#181f2a] border border-[#2a3240] text-slate-300 flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0">
+              DJ
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-title-md text-title-md text-white font-semibold">Django ORM Prefetch Related</span>
+<span class="px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-label-sm text-label-sm">Django</span>
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">60 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-1">
+                Solved N+1 query problem using prefetch_related on ManyToMany fields.
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-space-md shrink-0">
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">Oct 23, 2025</span>
+<div class="session-actions flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-md hover:bg-[#181f2a] text-slate-400 hover:text-primary transition-colors" onclick="editSession(this, 'Django ORM Prefetch Related', 'Django', 60)" title="Edit session">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors" onclick="deleteSession(this)" title="Delete session">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Session 3 -->
+<div class="session-card rounded-xl bg-[#0e141b] border border-[#222a36] hover:border-slate-700 p-space-md transition-all duration-200 group" data-category="AI/ML" data-concept="Backpropagation &amp; Gradient Descent" data-notes="Derived matrix partial derivatives for 2-layer MLP.">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-start md:items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-[#181f2a] border border-[#2a3240] text-emerald-400 flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0">
+              ML
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-title-md text-title-md text-white font-semibold">Backpropagation &amp; Gradient Descent</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-950/50 border border-emerald-800/40 text-emerald-400 font-label-sm text-label-sm">AI/ML</span>
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">75 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-1">
+                Derived matrix partial derivatives for 2-layer MLP.
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-space-md shrink-0">
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">Oct 22, 2025</span>
+<div class="session-actions flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-md hover:bg-[#181f2a] text-slate-400 hover:text-primary transition-colors" onclick="editSession(this, 'Backpropagation &amp; Gradient Descent', 'AI/ML', 75)" title="Edit session">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors" onclick="deleteSession(this)" title="Delete session">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Session 4 -->
+<div class="session-card rounded-xl bg-[#0e141b] border border-[#222a36] hover:border-slate-700 p-space-md transition-all duration-200 group" data-category="SQL" data-concept="SQL Window Functions (ROW_NUMBER)" data-notes="Used PARTITION BY department_id ORDER BY salary DESC.">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-start md:items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-[#181f2a] border border-[#2a3240] text-slate-300 flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0">
+              SQL
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-title-md text-title-md text-white font-semibold">SQL Window Functions (ROW_NUMBER)</span>
+<span class="px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-label-sm text-label-sm">SQL</span>
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">30 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-slate-400 mt-1">
+                Used PARTITION BY department_id ORDER BY salary DESC.
+              </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-space-md shrink-0">
+<span class="font-label-sm text-label-sm text-slate-400 font-mono">Oct 21, 2025</span>
+<div class="session-actions flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-md hover:bg-[#181f2a] text-slate-400 hover:text-primary transition-colors" onclick="editSession(this, 'SQL Window Functions (ROW_NUMBER)', 'SQL', 30)" title="Edit session">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-md hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors" onclick="deleteSession(this)" title="Delete session">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty Filter Notice (Hidden by default) -->
+<div class="hidden text-center py-space-xl bg-[#0e141b] border border-[#222a36] rounded-xl" id="no-sessions-msg">
+<span class="material-symbols-outlined text-slate-500 text-[40px]">search_off</span>
+<p class="font-title-md text-title-md text-white mt-2">No matching sessions found</p>
+<p class="font-body-sm text-body-sm text-slate-400">Try refining your search keyword or clearing the category filter.</p>
+<button class="mt-space-sm px-3 py-1.5 rounded-lg bg-primary text-black font-label-md text-label-md font-semibold" onclick="clearFilters()">
+        Reset Search
+      </button>
+</div>
+</div>
+<!-- QUICK MODAL FOR RECORDING SESSIONS -->
+<div class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="quick-add-modal">
+<div class="bg-[#131821] border border-[#2a3240] rounded-2xl max-w-lg w-full p-space-lg shadow-2xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">terminal</span>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold">Record Learning Session</h3>
+</div>
+<button class="p-1 rounded-md text-slate-400 hover:text-white hover:bg-[#181f2a]" onclick="document.getElementById('quick-add-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-3 font-body-sm text-body-sm">
+<div>
+<label class="block font-label-md text-label-md text-slate-300 mb-1">Concept / Title</label>
+<input class="w-full px-3 py-2 rounded-lg bg-[#0e141b] border border-[#222a36] text-white focus:border-primary/60 focus:outline-none" id="modal-concept-input" placeholder="e.g., Dynamic Programming Knapsack" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-label-md text-label-md text-slate-300 mb-1">Category</label>
+<select class="w-full px-3 py-2 rounded-lg bg-[#0e141b] border border-[#222a36] text-white focus:border-primary/60 focus:outline-none" id="modal-category-select">
+<option value="DSA">DSA</option>
+<option value="Python">Python</option>
+<option value="AI/ML">AI/ML</option>
+<option value="Django">Django</option>
+<option value="SQL">SQL</option>
+<option value="Web Development">Web Development</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-slate-300 mb-1">Duration (Minutes)</label>
+<input class="w-full px-3 py-2 rounded-lg bg-[#0e141b] border border-[#222a36] text-white focus:border-primary/60 focus:outline-none font-mono" id="modal-time-input" max="300" min="5" step="5" type="number" value="30"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-slate-300 mb-1">Key Takeaways &amp; Code Notes</label>
+<textarea class="w-full px-3 py-2 rounded-lg bg-[#0e141b] border border-[#222a36] text-white focus:border-primary/60 focus:outline-none" id="modal-notes-input" placeholder="Key algorithmic invariants, time/space complexity notes..." rows="3"></textarea>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-2">
+<button class="px-4 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-[#181f2a] font-label-md text-label-md transition-colors" onclick="document.getElementById('quick-add-modal').classList.add('hidden')">
+          Cancel
+        </button>
+<button class="px-4 py-2 rounded-lg bg-primary text-black font-label-md text-label-md font-bold shadow-md hover:brightness-110 transition-all" onclick="submitModalSession()">
+          Save Session
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let todayMinutes = 45;
+  let dailyGoalMinutes = 60;
+
+  function updateGoalUI() {
+    const fraction = `${todayMinutes} / ${dailyGoalMinutes} min`;
+    const percent = Math.min(100, Math.round((todayMinutes / dailyGoalMinutes) * 100));
+    const remaining = Math.max(0, dailyGoalMinutes - todayMinutes);
+
+    document.getElementById('stat-today-time').innerText = todayMinutes;
+    document.getElementById('stat-daily-goal').innerText = dailyGoalMinutes;
+    document.getElementById('stat-remaining-time').innerText = remaining;
+    
+    document.getElementById('goal-fraction').innerText = fraction;
+    document.getElementById('goal-percentage').innerText = `${percent}%`;
+    document.getElementById('progress-bar-fill').style.width = `${percent}%`;
+
+    const statusTextEl = document.getElementById('goal-status-text');
+    if (remaining === 0) {
+      statusTextEl.innerText = "🎯 Daily target smashed! You've achieved full goal velocity for today.";
+    } else {
+      statusTextEl.innerText = `Almost there! ${remaining} minutes remaining to hit your ${dailyGoalMinutes}-minute target.`;
+    }
+  }
+
+  function quickAdd15(tag) {
+    todayMinutes += 15;
+    updateGoalUI();
+
+    // Create session entry
+    const container = document.getElementById('sessions-container');
+    const newCard = document.createElement('div');
+    newCard.className = "session-card rounded-xl bg-[#0e141b] border border-[#222a36] hover:border-slate-700 p-space-md transition-all duration-200 group";
+    newCard.setAttribute('data-category', 'DSA');
+    newCard.setAttribute('data-concept', tag || 'Quick Study Sprint');
+    newCard.setAttribute('data-notes', 'Rapid +15m sprint recorded via momentum shortcut.');
+    newCard.innerHTML = `
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+        <div class="flex items-start md:items-center gap-space-md">
+          <div class="w-10 h-10 rounded-xl bg-[#181f2a] border border-[#2a3240] text-primary flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0">
+            ⚡
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-space-sm flex-wrap">
+              <span class="font-title-md text-title-md text-white font-semibold">${tag || 'Quick Study Sprint'}</span>
+              <span class="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm">DSA</span>
+              <span class="font-label-sm text-label-sm text-slate-400 font-mono">15 mins</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-slate-400 mt-1">
+              Rapid +15m sprint recorded via momentum shortcut.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between md:justify-end gap-space-md shrink-0">
+          <span class="font-label-sm text-label-sm text-slate-400 font-mono">Just now</span>
+          <div class="session-actions flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+            <button onclick="deleteSession(this)" class="p-1.5 rounded-md hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors" title="Delete session">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    container.prepend(newCard);
+  }
+
+  function editDailyGoalPrompt() {
+    const val = prompt("Enter daily learning goal in minutes (e.g. 60, 90, 120):", dailyGoalMinutes);
+    if (val && !isNaN(val) && Number(val) > 0) {
+      dailyGoalMinutes = parseInt(val, 10);
+      updateGoalUI();
+    }
+  }
+
+  function applyFilters() {
+    const query = (document.getElementById('session-search-input').value || '').toLowerCase().trim();
+    const cat = document.getElementById('category-filter-select').value;
+    const cards = document.querySelectorAll('.session-card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardCat = card.getAttribute('data-category') || '';
+      const cardConcept = (card.getAttribute('data-concept') || '').toLowerCase();
+      const cardNotes = (card.getAttribute('data-notes') || '').toLowerCase();
+
+      const matchesCat = (cat === 'ALL' || cardCat.toLowerCase() === cat.toLowerCase());
+      const matchesQuery = !query || cardConcept.includes(query) || cardNotes.includes(query);
+
+      if (matchesCat && matchesQuery) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    const msg = document.getElementById('no-sessions-msg');
+    if (visibleCount === 0) {
+      msg.classList.remove('hidden');
+    } else {
+      msg.classList.add('hidden');
+    }
+  }
+
+  function clearFilters() {
+    document.getElementById('session-search-input').value = '';
+    document.getElementById('category-filter-select').value = 'ALL';
+    applyFilters();
+  }
+
+  function deleteSession(btn) {
+    const card = btn.closest('.session-card');
+    if (card) {
+      card.remove();
+      applyFilters();
+    }
+  }
+
+  function editSession(btn, defaultConcept, defaultCat, defaultTime) {
+    const newConcept = prompt("Edit concept name:", defaultConcept);
+    if (newConcept) {
+      const card = btn.closest('.session-card');
+      card.setAttribute('data-concept', newConcept);
+      const titleSpan = card.querySelector('.font-title-md');
+      if (titleSpan) titleSpan.innerText = newConcept;
+    }
+  }
+
+  function submitModalSession() {
+    const concept = document.getElementById('modal-concept-input').value || 'Core Technical Exploration';
+    const category = document.getElementById('modal-category-select').value;
+    const minutes = parseInt(document.getElementById('modal-time-input').value, 10) || 30;
+    const notes = document.getElementById('modal-notes-input').value || 'Regular cadence session logged successfully.';
+
+    todayMinutes += minutes;
+    updateGoalUI();
+
+    const container = document.getElementById('sessions-container');
+    const newCard = document.createElement('div');
+    newCard.className = "session-card rounded-xl bg-[#0e141b] border border-[#222a36] hover:border-slate-700 p-space-md transition-all duration-200 group";
+    newCard.setAttribute('data-category', category);
+    newCard.setAttribute('data-concept', concept);
+    newCard.setAttribute('data-notes', notes);
+    newCard.innerHTML = `
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+        <div class="flex items-start md:items-center gap-space-md">
+          <div class="w-10 h-10 rounded-xl bg-[#181f2a] border border-[#2a3240] text-primary flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0">
+            ${category.slice(0, 3).toUpperCase()}
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-space-sm flex-wrap">
+              <span class="font-title-md text-title-md text-white font-semibold">${concept}</span>
+              <span class="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm">${category}</span>
+              <span class="font-label-sm text-label-sm text-slate-400 font-mono">${minutes} mins</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-slate-400 mt-1">
+              ${notes}
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between md:justify-end gap-space-md shrink-0">
+          <span class="font-label-sm text-label-sm text-slate-400 font-mono">Today</span>
+          <div class="session-actions flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+            <button onclick="editSession(this, '${concept}', '${category}', ${minutes})" class="p-1.5 rounded-md hover:bg-[#181f2a] text-slate-400 hover:text-primary transition-colors" title="Edit session">
+              <span class="material-symbols-outlined text-[18px]">edit</span>
+            </button>
+            <button onclick="deleteSession(this)" class="p-1.5 rounded-md hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors" title="Delete session">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    container.prepend(newCard);
+    document.getElementById('quick-add-modal').classList.add('hidden');
+    document.getElementById('modal-concept-input').value = '';
+    document.getElementById('modal-notes-input').value = '';
+  }
+</script></div></main><footer class="w-full bg-[#0e141b] border-t border-[#222a36] py-space-xl mt-space-xl"><div class="max-w-[1440px] mx-auto px-margin flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-6 h-6 rounded bg-[#181f2a] border border-[#2a3240] flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[14px]">local_fire_department</span></div><span class="font-label-md text-label-md text-slate-400 font-medium">StreakTracker © 2025. Engineering momentum everyday.</span></div><div class="flex items-center gap-space-lg"><span class="font-label-sm text-label-sm text-slate-500 uppercase tracking-wider">v2.4.0-stable</span><a class="font-body-sm text-body-sm text-slate-400 hover:text-white transition-colors" data-path="goal-settings" href="#">Preferences</a><a class="font-body-sm text-body-sm text-slate-400 hover:text-white transition-colors" data-path="monthly-calendar" href="#">Activity Matrix</a></div></div></footer></body></html>

@@ -1,0 +1,179 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account profile with contact details and completion status",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Unique user identifier"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Full name of the user"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 150,
+          "description": "Verified email address"
+        },
+        "mobileNumber": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "Contact mobile phone number"
+        },
+        "username": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Unique username handle"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Developer title or role"
+        },
+        "bio": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Short bio or learning focus"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin", "user"],
+          "description": "System access role"
+        },
+        "passwordHash": {
+          "type": "string",
+          "maxLength": 256,
+          "description": "Salted pbkdf2 password hash"
+        },
+        "salt": {
+          "type": "string",
+          "maxLength": 128,
+          "description": "Cryptographic salt for password verification"
+        },
+        "profileCompleted": {
+          "type": "boolean",
+          "description": "Flag indicating if profile setup has been completed"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of user creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last profile update"
+        }
+      },
+      "required": ["userId", "name", "email", "profileCompleted"]
+    },
+    "Session": {
+      "title": "Learning Session",
+      "description": "Individual technical study sprint record",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique session ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user identifier"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Concept or session title"
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Technical curriculum category"
+        },
+        "durationMinutes": {
+          "type": "number",
+          "description": "Duration in minutes"
+        },
+        "date": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Study date YYYY-MM-DD"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000,
+          "description": "Key takeaways and learnings"
+        },
+        "codeSnippet": {
+          "type": "string",
+          "maxLength": 5000,
+          "description": "Optional code snippet or invariant"
+        },
+        "mastered": {
+          "type": "boolean",
+          "description": "Mastery flag"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Creation timestamp in milliseconds"
+        }
+      },
+      "required": ["id", "userId", "title", "category", "durationMinutes", "date"]
+    },
+    "UserSettings": {
+      "title": "User Settings",
+      "description": "Learning goal configuration and streak parameters",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner user identifier"
+        },
+        "dailyGoalMinutes": {
+          "type": "number",
+          "description": "Daily target in minutes"
+        },
+        "weeklyGoalDays": {
+          "type": "number",
+          "description": "Weekly target active days"
+        },
+        "streakFreezeRemaining": {
+          "type": "number",
+          "description": "Remaining streak freezes"
+        },
+        "momentumGuardDays": {
+          "type": "number",
+          "description": "Days of inactivity before alert"
+        },
+        "activeTracks": {
+          "type": "array",
+          "description": "List of active track names"
+        }
+      },
+      "required": ["userId", "dailyGoalMinutes", "weeklyGoalDays"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Collection of user profiles containing name, email, and phone"
+    },
+    "/users/{userId}/sessions/{sessionId}": {
+      "schema": {
+        "$ref": "#/entities/Session"
+      },
+      "description": "Subcollection of learning sessions owned by each user"
+    },
+    "/users/{userId}/settings/current": {
+      "schema": {
+        "$ref": "#/entities/UserSettings"
+      },
+      "description": "User-specific learning goals and streak settings"
+    }
+  }
+}

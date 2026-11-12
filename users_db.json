@@ -1,0 +1,62 @@
+[
+  {
+    "userId": "user_surajsasi1212_gmail_com",
+    "username": "suraj",
+    "email": "surajsasi1212@gmail.com",
+    "passwordHash": "44a3abcff9d06524956683d2499c6585a75775736d8a48a3ed1927bea17865aad5a3bcf01e1a6c922349aa68450deaa52b7a8b0cbe30baf3567642bb55c6c638",
+    "salt": "9567c936d9feded0db56dbadccfb606f",
+    "name": "Suraj Sasi",
+    "mobileNumber": "+91 98765 43210",
+    "title": "Lead Platform Architect",
+    "bio": "Full Stack Engineer & StreakTracker Administrator.",
+    "role": "admin",
+    "profileCompleted": true,
+    "createdAt": "2026-11-11T06:58:12.620Z",
+    "updatedAt": "2026-11-11T06:58:12.621Z"
+  },
+  {
+    "userId": "rJlN3bZ87tOAxztHSVdQQrzj87k2",
+    "username": "surajsasi1212",
+    "email": "surajsasi1212@gmail.com",
+    "passwordHash": "39925983da442dbb143b754589b57fb95bfa2bb5e3c1eb045ee6458f896b3f58d3cdd76e291f8eb2df8f7ddb472a4d6cc7de053b26973694cee965f35e5b3d8c",
+    "salt": "imported_salt",
+    "name": "Suraj kumar",
+    "mobileNumber": "3458675436",
+    "title": "Software Engineer",
+    "bio": "Focused on DSA mastery and daily engineering cadence.",
+    "role": "admin",
+    "profileCompleted": true,
+    "createdAt": "2026-11-02T08:47:24.743Z",
+    "updatedAt": "2026-11-02T08:47:24.743Z"
+  },
+  {
+    "userId": "user_arun_gmail_com",
+    "username": "arun",
+    "email": "arun@gmail.com",
+    "passwordHash": "39925983da442dbb143b754589b57fb95bfa2bb5e3c1eb045ee6458f896b3f58d3cdd76e291f8eb2df8f7ddb472a4d6cc7de053b26973694cee965f35e5b3d8c",
+    "salt": "imported_salt",
+    "name": "Arun",
+    "mobileNumber": "+91 98765 43211",
+    "title": "Full Stack Developer",
+    "bio": "Focused on DSA mastery and daily engineering cadence.",
+    "role": "user",
+    "profileCompleted": true,
+    "createdAt": "2026-11-02T14:39:58.884Z",
+    "updatedAt": "2026-11-11T07:49:59.391Z"
+  },
+  {
+    "userId": "user_skre_1794380615448",
+    "username": "skre",
+    "email": "sk@gmal.com",
+    "passwordHash": "39925983da442dbb143b754589b57fb95bfa2bb5e3c1eb045ee6458f896b3f58d3cdd76e291f8eb2df8f7ddb472a4d6cc7de053b26973694cee965f35e5b3d8c",
+    "salt": "imported_salt",
+    "name": "sk",
+    "mobileNumber": "34568776558",
+    "title": "Full Stack Engineer",
+    "bio": "Daily engineering cadence and consistency learner.",
+    "role": "user",
+    "profileCompleted": true,
+    "createdAt": "2026-11-12T13:57:37.137Z",
+    "updatedAt": "2026-11-12T13:57:37.137Z"
+  }
+]

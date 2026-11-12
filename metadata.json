@@ -1,0 +1,8 @@
+{
+  "name": "StreakTracker - Developer Learning Cadence",
+  "description": "Engineering momentum everyday. Precision developer study tracker, streak metrics, monthly learning calendar, and category distribution.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
