@@ -31,37 +31,6 @@ A full-stack developer habit tracker and study cadence dashboard designed to bui
 
 ---
 
-## ⚡ Quick Start
-
-### 1. Clone & Install
-```bash
-git clone https://github.com/SurajKumar12122005/streaktracker.git
-cd streaktracker
-npm install
-```
-
-### 2. Configure Environment
-```bash
-cp .env.example .env
-```
-
-### 3. Run Development Server
-```bash
-npm run dev
-```
-Open **[http://localhost:3000](http://localhost:3000)** in your browser.
-
----
-
-## 🔑 Default Admin Credentials
-
-* **Username:** `suraj` (or `surajsasi1212@gmail.com`)
-* **Password:** `password123`
-
-*(You can also register a new account directly from the UI)*
-
----
-
 ## 📜 Available Scripts
 
 * `npm run dev` – Launch Express backend + Vite dev server at port 3000.
