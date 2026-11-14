@@ -326,14 +326,6 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
     }
   };
 
-  // Quick fill admin credentials for testing
-  const fillAdminCredentials = () => {
-    setAuthMode('login');
-    setLoginIdentifier('suraj');
-    setLoginPassword('password123');
-    setErrorMsg('');
-  };
-
   return (
     <div className="min-h-screen bg-[#0b0d11] text-white flex flex-col justify-center items-center px-4 py-8 relative overflow-hidden font-sans">
       {/* Background glow meshes */}
@@ -460,7 +452,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                   required
                   value={loginIdentifier}
                   onChange={e => setLoginIdentifier(e.target.value)}
-                  placeholder="e.g. suraj or you@example.com"
+                  placeholder="e.g. your_username or you@example.com"
                   autoComplete="username"
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0e141b] border border-[#2a3240] focus:border-[#00f5a0] focus:outline-none text-[0.875rem] text-white placeholder-slate-500 transition-colors"
                 />
@@ -535,17 +527,6 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               )}
             </button>
 
-            {/* Admin Demo Shortcut Helper */}
-            <div className="p-2.5 rounded-lg bg-[#0e141b]/60 border border-[#222a36] text-[0.75rem] text-slate-400 flex items-center justify-between">
-              <span>Admin account (pre-configured):</span>
-              <button
-                type="button"
-                onClick={fillAdminCredentials}
-                className="text-[#00f5a0] hover:underline font-mono text-[0.6875rem] cursor-pointer"
-              >
-                Auto-fill suraj / password123
-              </button>
-            </div>
           </form>
         )}
 
@@ -699,15 +680,6 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
             </svg>
             <span>Sign in with Google</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={onExploreDemo}
-            className="w-full py-2 px-4 rounded-xl bg-[#181f2a] hover:bg-[#222a36] border border-[#2a3240] text-slate-300 hover:text-white font-mono text-[0.75rem] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-          >
-            <span className="material-symbols-outlined text-[16px] text-amber-400">explore</span>
-            <span>Explore Demo Sandbox Mode</span>
           </button>
         </div>
       </div>

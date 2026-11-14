@@ -43,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e141b]/90 backdrop-blur-xl border-b border-[#222a36] shadow-[0_1px_16px_rgba(0,0,0,0.6)]">
-      <div className="h-14 sm:h-16 max-w-[1440px] mx-auto px-3 sm:px-6 md:px-8 flex items-center justify-between gap-2 sm:gap-4">
+      <div className="h-14 sm:h-16 max-w-[1440px] mx-auto px-3 sm:px-6 md:px-8 flex items-center justify-between gap-3 sm:gap-6">
         {/* Brand */}
         <div className="flex items-center gap-3 sm:gap-6">
           <button
@@ -140,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Right Action Bar */}
-        <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Cloud Database Access Button - Admin Only */}
           {isAdmin && (
             <button
@@ -168,7 +168,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onOpenGoogleSheetsModal}
             title="Google Sheets User Details Sync & Cloud Backup"
-            className={`hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
+            className={`hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
               isSheetsConnected
                 ? 'bg-emerald-950/30 hover:bg-emerald-950/50 border-[#00f5a0]/40 text-[#00f5a0]'
                 : 'bg-[#181f2a] hover:bg-[#222a36] border-[#2a3240] text-slate-300 hover:text-[#00f5a0]'

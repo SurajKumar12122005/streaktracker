@@ -1,0 +1,8 @@
+{
+  "firestore": {
+    "databaseId": "ai-studio-streaktrackerdev-14c11fd8-21f9-4bdb-a408-f86ca0df08ad",
+    "rules": "firestore.rules",
+    "edition": "ENTERPRISE",
+    "dataAccessMode": "FIRESTORE_NATIVE"
+  }
+}
