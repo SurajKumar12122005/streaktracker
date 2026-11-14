@@ -2,11 +2,15 @@
 
 A full-stack developer habit tracker and study cadence dashboard designed to build consistency and engineering momentum everyday.
 
+🌐 **Live Application:** [https://streaktracker.ai.studio](https://streaktracker.ai.studio)
+
 ---
 
 ## 🚀 Overview
 
 **StreakTracker** helps engineers stay accountable to their daily learning goals. It tracks daily study streaks, logs time spent across engineering domains (DSA, System Design, Frontend, Backend, Cloud), provides an interactive sprint timer, and visualizes learning habits through activity heatmaps and monthly calendars.
+
+🔗 **Try it live:** [https://streaktracker.ai.studio](https://streaktracker.ai.studio)
 
 ---
 
@@ -28,6 +32,7 @@ A full-stack developer habit tracker and study cadence dashboard designed to bui
 * **Backend**: Node.js, Express 4, tsx
 * **Security & Auth**: PBKDF2 SHA-512 password encryption, Firebase Auth (Google OAuth)
 * **Databases & Cloud**: Google Cloud Firestore, Google Sheets & Drive REST APIs
+* **Hosting**: Google AI Studio ([streaktracker.ai.studio](https://streaktracker.ai.studio))
 
 ---
 
